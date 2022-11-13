@@ -101,5 +101,4 @@ function turnHoursToMinutes(moviesArray) {
 
 // BONUS - Iteration 8: Best yearly score average - Best yearly score average
 function bestYearAvg(moviesArray) {
-    return `The best year was ${bestYear} with an average score of ${highestAvg}`
 }
