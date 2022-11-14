@@ -27,7 +27,8 @@ function scoresAverage(moviesArray) {
     const sumArray = array.reduce((sum, score) => {
         return sum + score;
     }, 0);
-    return sumArray / moviesArray.lengt
+    const result = sumArray / moviesArray.lengt
+    return Math.round(result, -2) 
 }
 
 // Iteration 4: Drama movies - Get the average of Drama Movies
@@ -51,7 +52,7 @@ function dramaMoviesScore(moviesArray) {
 
 // Iteration 5: Ordering by year - Order by year, ascending (in growing order)
 function orderByYear(moviesArray) {
-    const arrayCopy = [...moviesArray];
+    let arrayCopy = [...moviesArray];
     return arrayCopy.sort((a, b) => {
         if (a.year > b.year) {
             return 1;
@@ -82,7 +83,8 @@ function orderAlphabetically(moviesArray) {
 
 // BONUS - Iteration 7: Time Format - Turn duration of the movies from hours to minutes
 function turnHoursToMinutes(moviesArray) {
-    let newMovieArray = moviesArray.slice()
+    let newMovieArray = [...moviesArray]
+    newMovieArray = moviesArray.slice()
     newMovieArray = newMovieArray.map(function (movie) {
 
         let indexHour = movie.duration.indexOf('h')
@@ -101,4 +103,14 @@ function turnHoursToMinutes(moviesArray) {
 
 // BONUS - Iteration 8: Best yearly score average - Best yearly score average
 function bestYearAvg(moviesArray) {
+    if (!moviesArray.length) {
+        return 0;
+    }
+    const array = moviesArray.map(value => {
+        return value.score;
+    });
+    const sumArray = array.reduce((sum, score) => {
+        return sum + score;
+    }, 0);
+    return sumArray / moviesArray.lengt
 }
