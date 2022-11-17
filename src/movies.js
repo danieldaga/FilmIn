@@ -21,12 +21,12 @@ function scoresAverage(moviesArray) {
     if (!moviesArray.length) return 0;
 
     const avgScore =
-        moviesArray.reduce((total, curr) => {
-            if (typeof curr.score !== "number") {
-                curr.score = 0;
+        moviesArray.reduce((total, num) => {
+            if (typeof num.score !== "number") {
+                num.score = 0;
             }
 
-            return total + curr.score;
+            return total + num.score;
         }, 0) / moviesArray.length;
 
     return +avgScore.toFixed(2);
