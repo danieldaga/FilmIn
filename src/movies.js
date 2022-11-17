@@ -84,13 +84,18 @@ function orderAlphabetically(moviesArray) {
 
 // BONUS - Iteration 7: Time Format - Turn duration of the movies from hours to minutes
 function turnHoursToMinutes(moviesArray) {
-    return moviesArray.map((movie) => {
-        const splitHoursAndMins = movie.duration.replace(/[a-z]/gi, "").split(" ");
-
-        const hours = +splitHoursAndMins[0] * 60;
-        const minutes = splitHoursAndMins[1] ? +splitHoursAndMins[1] : 0;
-
-        return { ...movie, duration: hours + minutes };
+    // let newArr = moviesArray.map((elm) => elm);
+    let newArr = [...moviesArray];
+    return newArr.map((e) => {
+        let minDuration = 0;
+        let index = e.duration.indexOf(" ");
+        if (index != -1)
+            minDuration =
+                Number(e.duration[0] * 60) +
+                Number(e.duration[index + 1] * 10) +
+                Number(e.duration[index + 2]);
+        else minDuration = Number(e.duration[0] * 60);
+        return { ...e, duration: minDuration };
     });
 }
 
