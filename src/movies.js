@@ -103,8 +103,7 @@ function bestYearAvg(moviesArray) {
     if (moviesArray.length === 0) {
         return null
     } else { 
-        let uniqueYears, moviesByYear, scores, avgScores, biggestScore, ResultScores, bestYears, bestYear;
-        uniqueYears = [...new Set(moviesArray.map(movie=>movie.year))];
+        let uniqueYears = [...new Set(moviesArray.map(movie=>movie.year))];
 
         moviesByYear = [];
         uniqueYears.forEach(year => {moviesByYear.push(moviesArray.filter(movie => movie.year === year))})
