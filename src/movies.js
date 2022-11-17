@@ -100,32 +100,32 @@ function turnHoursToMinutes(moviesArray) {
 
 // BONUS - Iteration 8: Best yearly score average - Best yearly score average
 function bestYearAvg(moviesArray) {
-    if (!moviesArray.length) return null;
+    if (moviesArray.length === 0) {
+        return null;
+    } else { 
+        let uniqueYears, moviesByYear, scores, avgScores, biggestScore, idxScores, bestYears, bestYear;
+        uniqueYears = [...new Set(moviesArray.map(movie=>movie.year))];
 
-    const scoresPerYear = {};
+        moviesByYear = [];
+        uniqueYears.forEach(year => {moviesByYear.push(moviesArray.filter(movie => movie.year === year))})
 
-    for (const movie of moviesArray) {
-        if (!scoresPerYear[movie.year]) {
-            scoresPerYear[movie.year] = [movie.score];
-        } else {
-            scoresPerYear[movie.year].push(movie.score);
-        }
+        scores = [];
+        moviesByYear.forEach(yearMovies => scores.push(yearMovies.map(movie => movie.score)))
+
+        avgScores = scores.map(scoresArr => scoresArr.reduce((score1,score2) => score1+score2,0)/scoresArr.length);
+
+        biggestScore = Math.max(...avgScores)
+
+        ResultScores = avgScores.reduce(function(accum,score,currentIndex) {
+            if (score === biggestScore) {
+                accum.push(currentIndex)
+            };
+            return accum;
+        }, []);
+
+        bestYears = ResultScores.map(index => uniqueYears[index]);
+        bestYear = Math.min(...bestYears);
+
+        return `The best year was ${bestYear} with an average score of ${biggestScore}`
     }
-
-    let highestAvg = 0;
-    let bestYear;
-
-    for (const year in scoresPerYear) {
-        const avgForYear =
-            scoresPerYear[year].reduce((total, curr) => total + curr, 0) /
-            scoresPerYear[year].length;
-
-        if (avgForYear > highestAvg) {
-            highestAvg = avgForYear;
-            bestYear = year;
-        }
-    }
-
-    return `The best year was ${bestYear} with an average score of ${highestAvg}`;
-
 }
