@@ -101,9 +101,9 @@ function turnHoursToMinutes(moviesArray) {
 // BONUS - Iteration 8: Best yearly score average - Best yearly score average
 function bestYearAvg(moviesArray) {
     if (moviesArray.length === 0) {
-        return null;
+        return null
     } else { 
-        let uniqueYears, moviesByYear, scores, avgScores, biggestScore, idxScores, bestYears, bestYear;
+        let uniqueYears, moviesByYear, scores, avgScores, biggestScore, ResultScores, bestYears, bestYear;
         uniqueYears = [...new Set(moviesArray.map(movie=>movie.year))];
 
         moviesByYear = [];
