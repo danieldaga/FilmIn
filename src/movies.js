@@ -122,7 +122,7 @@ function bestYearAvg(moviesArray) {
             return accum;
         }, []);
 
-        bestYears = ResultScores.map(index => uniqueYears[index]);
+        bestYears = ResultScores.map(i => uniqueYears[i]);
         bestYear = Math.min(...bestYears);
 
         return `The best year was ${bestYear} with an average score of ${biggestScore}`
